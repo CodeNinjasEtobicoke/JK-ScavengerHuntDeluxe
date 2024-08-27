@@ -29,7 +29,7 @@ public class DialogueOpen : MonoBehaviour
         clue = Random.Range(0, 9);
         searchDialog();
     }
-
+   
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!begin && pHolding.Verify())
@@ -44,11 +44,12 @@ public class DialogueOpen : MonoBehaviour
     {
         if (pHolding.holdValue == clue)
         {
+            dialogue = "You found my " + collectibles[clue] + "! Hooray!";
             end = true;
         }
         else
         {
-
+            dialogue = "No, that's not my" + collectibles[clue] + ".";
         }
     }
 
