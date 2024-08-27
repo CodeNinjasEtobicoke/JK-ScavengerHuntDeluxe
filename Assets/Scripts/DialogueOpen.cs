@@ -18,7 +18,6 @@ public class DialogueOpen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
         greeting = GetComponent<AudioSource>();
         collectibles = new string[] { "film", "balloons", "life saver", "bull's eye", "pipe", "key", "fish", "birdhouse", "red airhorn", "magic hat" };
         createClue();
@@ -27,9 +26,8 @@ public class DialogueOpen : MonoBehaviour
     public void createClue()
     {
         clue = Random.Range(0, 9);
-        searchDialog();
     }
-   
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!begin && pHolding.Verify())
@@ -37,19 +35,17 @@ public class DialogueOpen : MonoBehaviour
             checkClue();
         }
         greeting.Play(0);
-        interfaceManager.GetComponent<InterfaceManager>().ShowBox(dialogue, clue);
     }
 
     private void checkClue()
     {
         if (pHolding.holdValue == clue)
         {
-            dialogue = "You found my " + collectibles[clue] + "! Hooray!";
             end = true;
         }
         else
         {
-            dialogue = "No, that's not my" + collectibles[clue] + ".";
+
         }
     }
 
@@ -57,8 +53,5 @@ public class DialogueOpen : MonoBehaviour
     {
         begin = false;
     }
-   public void searchDialog()
-    {
-        dialogue = "Hi! Can you help me find my " + collectibles[clue] + "?";
-    }
+
 }

@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using TMPro;
 
 public class InterfaceManager : MonoBehaviour
 {
-    public GameObject dialogueBox;
-    public TMP_Text dialogueText;
+    public GameObject dialogBox;
+    public Text dialogText;
     public Image seekImage;
     public GameObject npc;
     public GameObject randomSpawn;
@@ -19,16 +18,13 @@ public class InterfaceManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dialogueBox.SetActive(false);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Submit") && dialogueBox.activeInHierarchy) 
-        {
-            dialogueBox.SetActive(false);
-        }
+
     }
 
     public void CollectibleUpdate(int item)
@@ -36,13 +32,9 @@ public class InterfaceManager : MonoBehaviour
 
     }
 
-    public void ShowBox(string dialogue, int item)
+    public void ShowBox(string dialog, int item)
     {
-        dialogueBox.SetActive(true);
-        dialogueText.text = dialogue;
-        seekImage.GetComponent<Image>().sprite = collectibleSource[item];
-
-        if (npc.GetComponent<DialogueOpen>().begin)
+        if (npc.GetComponent<DialogOpen>().begin)
         {
             scatterCoins();
         }
@@ -51,6 +43,6 @@ public class InterfaceManager : MonoBehaviour
     public void scatterCoins()
     {
         randomSpawn.GetComponent<RandomSpawn>().DistributeCollectibles();
-        npc.GetComponent<DialogueOpen>().coinsScattered();
+        npc.GetComponent<DialogOpen>().coinsScattered();
     }
 }

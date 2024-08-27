@@ -75,7 +75,7 @@ public class CoinAnimate : MonoBehaviour
         {
             swapNumber = pHolding.holdValue;
 
-            StartCoroutine("reSkin", swapNumber);
+            reSkin(swapNumber);
 
             flip = false;
             Invoke("swap", timeToAct);
@@ -98,9 +98,8 @@ public class CoinAnimate : MonoBehaviour
         animatorClip.SetBool(flipParameter, flip);
     }
 
-    public IEnumerator reSkin(int index)
+    public void reSkin(int index)
     {
-        yield return new WaitForSeconds(timeToAct + 1f);
         gameObject.transform.Find("CoinBack").GetComponent<MeshRenderer>().material.mainTexture = texture[index];
     }
 
