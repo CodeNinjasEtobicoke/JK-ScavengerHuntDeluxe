@@ -12,6 +12,8 @@ public class InterfaceManager : MonoBehaviour
     public Image seekImage;
     public GameObject npc;
     public GameObject randomSpawn;
+    public Image collectible;
+    public GameObject showSprite;
 
     [SerializeField]
     private Sprite[] collectibleSource;
@@ -20,6 +22,7 @@ public class InterfaceManager : MonoBehaviour
     void Start()
     {
         dialogBox.SetActive(false);
+        showSprite.SetActive(false);
     }
 
     // Update is called once per frame
@@ -28,12 +31,18 @@ public class InterfaceManager : MonoBehaviour
         if(Input.GetButton("Submit") && dialogBox.activeInHierarchy) 
         {
             dialogBox.SetActive(false);
+
+            if (npc.GetComponent<DialogueOpen>().end)
+            {
+                SceneManager.LoadScene(0);
+            }
         }
     }
 
     public void CollectibleUpdate(int item)
     {
-
+        showSprite.SetActive(true);
+        collectible.GetComponent<Image>().sprite = collectibleSource[item];
     }
 
     public void ShowBox(string dialog, int item)
@@ -41,7 +50,7 @@ public class InterfaceManager : MonoBehaviour
         dialogBox.SetActive(true);
         dialogText.text = dialog;
         seekImage.GetComponent<Image>().sprite = collectibleSource[item];
-        if (npc.GetComponent<DialogOpen>().begin)
+        if (npc.GetComponent<DialogueOpen>().begin)
         {
             scatterCoins();
         }
@@ -50,6 +59,6 @@ public class InterfaceManager : MonoBehaviour
     public void scatterCoins()
     {
         randomSpawn.GetComponent<RandomSpawn>().DistributeCollectibles();
-        npc.GetComponent<DialogOpen>().coinsScattered();
+        npc.GetComponent<DialogueOpen>().coinsScattered();
     }
 }
