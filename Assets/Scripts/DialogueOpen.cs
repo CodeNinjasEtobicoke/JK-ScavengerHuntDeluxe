@@ -19,7 +19,9 @@ public class DialogueOpen : MonoBehaviour
     void Start()
     {
         greeting = GetComponent<AudioSource>();
+        //collectibles = new string[] { " film so I can watch my movie", "balloons for my birthday party", "life saver so I don't drown", "bull's eye so I can play darts", "pipe so I can smoke", "key for my house", "fish so I can cook it and eat dinner", "birdhouse so I can see the birds", "red airhorn so I can scare my friend", "magic hat so I can do some magic tricks" };
         collectibles = new string[] { "film", "balloons", "life saver", "bull's eye", "pipe", "key", "fish", "birdhouse", "red airhorn", "magic hat" };
+
         createClue();
     }
 
@@ -58,6 +60,15 @@ public class DialogueOpen : MonoBehaviour
     }
     public void searchDialougue()
     {
-        dialogue = "Hi! Can you help me find my " + collectibles[clue] + "?";
+        //dialogue = "Hi! Can you help me find my " + collectibles[clue] + "?";
+
+        switch (collectibles[clue])
+        {
+            case "film":
+                dialogue = "Hi! Can you help me find my old ancient film, worth a million?";
+                break;
+            case "balloons":
+                break;
+        }
     }
 }

@@ -51,23 +51,6 @@ public class CoinAnimate : MonoBehaviour
         coinAudio = GetComponent<AudioSource>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-
-        if (pickupEffect)
-        {
-            Instantiate(pickupEffect, transform.position, transform.rotation);
-        }
-
-        flip = true;
-
-        animatorClip.SetBool(flipParameter, flip);
-
-        Invoke("moveOff", timeToAct);
-
-        coinAudio.Play(0);
-    }
-
     private void moveOff()
     {
 
@@ -103,5 +86,20 @@ public class CoinAnimate : MonoBehaviour
         gameObject.transform.Find("CoinBack").GetComponent<MeshRenderer>().material.mainTexture = texture[index];
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (pickupEffect)
+        {
+            Instantiate(pickupEffect, transform.position, transform.rotation);
+        }
+
+        flip = true;
+
+        animatorClip.SetBool(flipParameter, flip);
+
+        Invoke("moveOff", timeToAct);
+
+        coinAudio.Play(0);
+    }
 
 }
