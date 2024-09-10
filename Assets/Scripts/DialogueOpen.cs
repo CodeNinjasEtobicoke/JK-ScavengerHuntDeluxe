@@ -65,10 +65,36 @@ public class DialogueOpen : MonoBehaviour
         switch (collectibles[clue])
         {
             case "film":
-                dialogue = "Hi! Can you help me find my old ancient film, worth a million?";
+                dialogue = "Hi! Can you help me find my film so I can watch a movie?";
                 break;
             case "balloons":
+                dialogue = "Hi! Can you help me find my balloons for my birthday party";
+                break;
+            case "life saver":
+                dialogue = "Hi! Can you help me find my life saver so I can go swimming";
+                break;
+            case "bull's eye ":
+                dialogue = "Hi! Can you help me find my bull's eye so I can play darts";
+                break;
+            case "pipe":
+                dialogue = "Hi! Can you help me find my pipe so I can smoke";
+                break;
+            case "key":
+                dialogue = "Hi! Can you help me find my key so I can get into my house";
+                break;
+            case "fish":
+                dialogue = "Hi! Can you help me find my pet fish so I can feed it";
+                break;
+            case "birdhouse":
+                dialogue = "Hi! Can you help me find my birdhouse so I can see the birds";
+                break;
+            case "red airhorn":
+                dialogue = "Hi! Can you help me find my red airhorn so I can scare my friend";
+                break;
+            case "magic hat":
+                dialogue = "Hi! Can you help me find my magic hat so I can do some magic tricks";
                 break;
         }
     }
+    
 }
